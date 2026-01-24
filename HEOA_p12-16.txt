@@ -1,0 +1,366 @@
+J. Lian and G. Hui                                                                                               Expert Systems With Applications 241 (2024) 122638
+
+
+
+
+                                                                  Fig. 5. (continued).
+
+
+leveraging their existing knowledge. This exploration process is                 denoted as ω, gradually decreases as development progresses. The
+captured by the equation expressed in the Eq. (8).                               expression for the coefficient ω is as follows:
+       ⎧
+                         − t                                                                π         t
+       ⎪
+       ⎨ ω⋅Xit ⋅exp(              ), R < A                                       ω = 0.2cos( (1 −           ))                                                 (9)
+  t+1
+Xi =                 rand⋅Maxiter                            (8)                            2       Maxiter
+       ⎪
+       ⎩ ω⋅X t + Rn⋅ones(1, dim), R ≥ A
+                i                                                                     Explorers: Explorers play a crucial role in venturing into uncharted
+                                                                                 territory to discover the global optimal solution. In the conducted
+    In the Eq. (8), Rn represents a random number that follows a normal          experiment, individuals ranking in the top 40 % to 80 % of the popu­
+distribution. The function ones(1, dim) generate a row vector with dim           lation in terms of fitness are designated as explorers. The search strategy
+elements, where each element is set to 1. R is a random number in the            employed by explorers is represented by Eq. (10).
+range [0, 1] that represents the complexity of the situation associated                        ( t2             )
+with the leaders. A denotes the evaluation value of the situation. In the                        X       − X t2
+                                                                                 Xit+1 = Rn⋅exp worst 2 i                                               (10)
+conducted experiments, the value of A is 0.6. Based on the complexity of                               i
+the situation at a particular position, the leader will select an appro­
+                                                                                    In the Eq. (10), Xworst
+                                                                                                      t
+                                                                                                            represents the location of the least adapted
+priate search strategy. The knowledge acquisition ease coefficient,
+
+                                                                            12
+J. Lian and G. Hui                                                                                                 Expert Systems With Applications 241 (2024) 122638
+
+
+Table 6
+Result of multimodal benchmark functions (different population).
+  Function            Item                N = 10                   N = 20                      N = 30                   N = 40                       N = 50
+
+  F8                  Best                ¡1.26E þ 04              ¡1.26E þ 04                 ¡1.26E þ 04              ¡1.26E þ 04                  ¡1.26E þ 04
+                      Median              ¡1.25E þ 04              ¡1.26E þ 04                 ¡1.26E þ 04              ¡1.26E þ 04                  ¡1.26E þ 04
+                      Mean                ¡1.17E þ 04              ¡1.24E þ 04                 ¡1.25E þ 04              ¡1.26E þ 04                  ¡1.26E þ 04
+                      Worst               ¡9.32E þ 03              ¡9.65E þ 03                 ¡1.07E þ 04              ¡1.26E þ 04                  ¡1.26E þ 04
+                      STD                 1.51E þ 06               4.25E þ 05                  1.83E þ 05               5.57E þ 00                   1.96E þ 00
+  F9                  Best                0.00E þ 00               0.00E þ 00                  0.00E þ 00               0.00E þ 00                   0.00E þ 00
+                      Median              0.00E þ 00               0.00E þ 00                  0.00E þ 00               0.00E þ 00                   0.00E þ 00
+                      Mean                0.00E þ 00               0.00E þ 00                  0.00E þ 00               0.00E þ 00                   0.00E þ 00
+                      Worst               0.00E þ 00               0.00E þ 00                  0.00E þ 00               0.00E þ 00                   0.00E þ 00
+                      STD                 0.00E þ 00               0.00E þ 00                  0.00E þ 00               0.00E þ 00                   0.00E þ 00
+  F10                 Best                4.44E-16                 4.44E-16                    4.44E-16                 4.44E-16                     4.44E-16
+                      Median              4.44E-16                 4.44E-16                    4.44E-16                 4.44E-16                     4.44E-16
+                      Mean                4.44E-16                 4.44E-16                    4.44E-16                 4.44E-16                     4.44E-16
+                      Worst               4.44E-16                 4.44E-16                    4.44E-16                 4.44E-16                     4.44E-16
+                      STD                 0.00E þ 00               0.00E þ 00                  0.00E þ 00               0.00E þ 00                   0.00E þ 00
+  F11                 Best                0.00E þ 00               0.00E þ 00                  0.00E þ 00               0.00E þ 00                   0.00E þ 00
+                      Median              0.00E þ 00               0.00E þ 00                  0.00E þ 00               0.00E þ 00                   0.00E þ 00
+                      Mean                0.00E þ 00               0.00E þ 00                  0.00E þ 00               0.00E þ 00                   0.00E þ 00
+                      Worst               0.00E þ 00               0.00E þ 00                  0.00E þ 00               0.00E þ 00                   0.00E þ 00
+                      STD                 0.00E þ 00               0.00E þ 00                  0.00E þ 00               0.00E þ 00                   0.00E þ 00
+  F12                 Best                3.36E-12                 2.38E-12                    1.14E-14                 1.38E-14                     1.07E-15
+                      Median              2.97E-10                 7.14E-11                    4.99E-12                 2.14E-12                     2.24E-13
+                      Mean                1.06E-08                 3.08E-10                    5.14E-11                 4.69E-11                     6.14E-12
+                      Worst               1.16E-07                 1.66E-09                    5.91E-10                 4.76E-10                     5.26E-11
+                      STD                 7.32E-16                 2.27E-19                    1.75E-20                 1.41E-20                     1.65E-22
+  F13                 Best                8.72E-13                 1.86E-12                    2.53E-14                 4.74E-14                     1.80E-14
+                      Median              3.45E-09                 1.92E-10                    8.35E-11                 5.61E-12                     4.71E-12
+                      Mean                5.35E-08                 3.15E-09                    6.56E-10                 2.68E-10                     7.98E-11
+                      Worst               6.48E-07                 1.43E-08                    4.69E-09                 2.16E-09                     8.31E-10
+                      STD                 2.02E-14                 1.76E-17                    1.30E-18                 3.40E-19                     3.53E-20
+
+
+
+individual within the population at the t th iteration.                             2.6. Computational complexity of the ECO
+    Followers: Followers, in the conducted experiment, adhere to the
+guidance of the most adaptable leader and follow their footsteps. Spe­                  In this section, the general computational complexity of the HEOA is
+cifically, the top 80 % to 90 % of the human population, based on their             presented. The computational complexity of HEOA typically relies on
+level of adaptation, are assigned the role of followers. The search                 three rules: solution initialization, fitness function calculation, and so­
+strategy employed by followers can be expressed as follows:                         lution updating. Assume that N is the number of solutions and O(N) is
+                   ( t          )                                                   the computational complexity of the solutions’ initialization processes.
+Xit+1 = Xit + ω⋅Rd⋅ Xbest − Xit                                    (11)             The computational complexity of the solutions’ updating processes is
+    In the Eq. (11), Xbest
+                        t
+                             represents the location of the most adapted in­        O(T × N) + O(T × N × dim) + O(T × N × logN), which consists of
+dividual within the human population at iteration t.Rd denotes a                    exploring for the best positions and updating the positions of all solu­
+random number within the range [1, dim].                                            tions, where the total number of iterations is called T and the dimension
+    Losers: The individuals who are not well adapted and remain in the              size of the given problem is called dim. Accordingly, the total compu­
+population are referred to as losers. These under-adapted losers that do            tational complexity of the proposed ECO is O(T × N) +
+not fit into the society will be eliminated, and the population will be              O(T × N × dim) + O(T × N × logN).
+replenished through reproduction in areas suitable for human devel­
+opment. The equation for population replenishment is as follows:                    3. Results and discussion
+               (           )
+Xit+1 = Xbest + Xbest − Xit ⋅Rn                                        (12)             In this evaluation study, the performance of the HEOA is assessed
+                                                                                    using various benchmark functions and engineering problems. The
+2.5. Pseudo-code of the HEOA                                                        evaluation involves comparing the results of HEOA with ten other
+                                                                                    population-based metaheuristic algorithms commonly found in the
+    To recap, the HEOA begins optimization with a pre-determined set of             literature.
+candidate solutions, called the population. This population is randomly                 The algorithms used for comparison are as follows:
+generated using a Logistic Chaos mapping, which enhances the opti­
+mization procedure. During the iterative process, the search strategy of               1. Ant Lion Optimizer (ALO) (Mirjalili, 2015b)
+HEOA explores the vicinity of the near-optimal or best solution obtained               2. Grey Wolf Optimizer (GWO) (Saremi et al., 2015)
+so far. Each solution in HEOA updates its position based on the collective             3. Whale Optimization Algorithm (WOA) (Mirjalili et al., 2016)
+information gathered from all the current search results. HEOA provides                4. Salp Swarm Algorithm (SSA) (Mirjalili et al., 2017)
+five different search strategies, including one for the exploration phase              5. Arithmetic Optimization Algorithm (AOA) (Agushaka et al.,
+and four for the development phase. These strategies are designed to                      2021)
+strike a balance between exploration and exploitation, ensuring an                     6. Harris Hawks Optimization (HHO) (Heidari et al., 2019)
+effective search process. The search process of HEOA terminates when a                 7. Grasshopper Optimization Algorithm (GOA) (Saremi et al., 2017)
+specific end condition is satisfied. This condition can involve reaching a             8. Sine Cosine Algorithm (SCA) (Mirjalili et al., 2016a)
+maximum number of iterations or achieving a satisfactory solution. For                 9. Multi-Verse Optimizer (MVO) (Mirjalili et al., 2016c)
+a more comprehensive understanding of HEOA, the pseudo-code of the                    10. Equilibrium optimizer (EO) (Faramarzi et al., 2020a)
+algorithm is detailed in Fig. 3.
+
+                                                                               13
+J. Lian and G. Hui                                                                                                Expert Systems With Applications 241 (2024) 122638
+
+
+Table 7
+Result of fixed-dimension multimodal benchmark functions (different population).
+  Function            Item                N = 10                    N = 20                    N = 30                   N = 40                       N = 50
+
+  F14                 Best                9.98E-01                  9.98E-01                  9.98E-01                 9.98E-01                     9.98E-01
+                      Median              9.98E-01                  9.98E-01                  9.98E-01                 9.98E-01                     9.98E-01
+                      Mean                3.00E þ 00                1.20E þ 00                1.05E þ 00               9.98E-01                     9.98E-01
+                      Worst               1.27E þ 01                4.95E þ 00                1.99E þ 00               9.98E-01                     9.98E-01
+                      STD                 1.69E þ 01                7.42E-01                  4.69E-02                 5.85E-26                     1.55E-31
+  F15                 Best                3.09E-04                  3.09E-04                  3.10E-04                 3.08E-04                     3.08E-04
+                      Median              3.39E-04                  3.21E-04                  3.22E-04                 3.20E-04                     3.14E-04
+                      Mean                3.50E-04                  3.31E-04                  3.26E-04                 3.22E-04                     3.17E-04
+                      Worst               5.07E-04                  4.08E-04                  3.61E-04                 3.67E-04                     3.35E-04
+                      STD                 1.82E-09                  5.70E-10                  2.05E-10                 1.70E-10                     7.21E-11
+  F16                 Best                ¡1.03E þ 00               ¡1.03E þ 00               ¡1.03E þ 00              ¡1.03E þ 00                  ¡1.03E þ 00
+                      Median              ¡1.03E þ 00               ¡1.03E þ 00               ¡1.03E þ 00              ¡1.03E þ 00                  ¡1.03E þ 00
+                      Mean                ¡1.03E þ 00               ¡1.03E þ 00               ¡1.03E þ 00              ¡1.03E þ 00                  ¡1.03E þ 00
+                      Worst               ¡1.03E þ 00               ¡1.03E þ 00               ¡1.03E þ 00              ¡1.03E þ 00                  ¡1.03E þ 00
+                      STD                 2.16E-11                  2.68E-14                  1.39E-16                 5.11E-17                     1.20E-19
+  F17                 Best                3.98E-01                  3.98E-01                  3.98E-01                 3.98E-01                     3.98E-01
+                      Median              3.98E-01                  3.98E-01                  3.98E-01                 3.98E-01                     3.98E-01
+                      Mean                3.98E-01                  3.98E-01                  3.98E-01                 3.98E-01                     3.98E-01
+                      Worst               3.99E-01                  3.98E-01                  3.98E-01                 3.98E-01                     3.98E-01
+                      STD                 3.09E-08                  8.90E-11                  1.19E-12                 1.04E-14                     8.06E-15
+  F18                 Best                3.00E þ 00                3.00E þ 00                3.00E þ 00               3.00E þ 00                   3.00E þ 00
+                      Median              3.58E þ 00                3.00E þ 00                3.00E þ 00               3.00E þ 00                   3.00E þ 00
+                      Mean                1.52E þ 01                5.70E þ 00                3.00E þ 00               3.00E þ 00                   3.00E þ 00
+                      Worst               3.00E þ 01                3.00E þ 01                3.00E þ 00               3.00E þ 00                   3.00E þ 00
+                      STD                 1.79E þ 02                6.56E þ 01                2.44E-09                 9.32E-13                     1.38E-14
+  F19                 Best                ¡3.86E þ 00               ¡3.86E þ 00               ¡3.86E þ 00              ¡3.86E þ 00                  ¡3.86E þ 00
+                      Median              ¡3.76E þ 00               ¡3.75E þ 00               ¡3.78E þ 00              ¡3.86E þ 00                  ¡3.86E þ 00
+                      Mean                ¡3.75E þ 00               ¡3.76E þ 00               ¡3.79E þ 00              ¡3.83E þ 00                  ¡3.84E þ 00
+                      Worst               ¡3.55E þ 00               ¡3.60E þ 00               ¡3.73E þ 00              ¡3.74E þ 00                  ¡3.75E þ 00
+                      STD                 6.10E-03                  3.43E-03                  2.13E-03                 2.02E-03                     1.24E-03
+  F20                 Best                ¡3.15E þ 00               ¡3.29E þ 00               ¡3.30E þ 00              ¡3.31E þ 00                  ¡3.32E þ 00
+                      Median              ¡2.88E þ 00               ¡3.09E þ 00               ¡3.15E þ 00              ¡3.15E þ 00                  ¡3.26E þ 00
+                      Mean                ¡2.91E þ 00               ¡3.09E þ 00               ¡3.16E þ 00              ¡3.17E þ 00                  ¡3.23E þ 00
+                      Worst               ¡2.67E þ 00               ¡2.93E þ 00               ¡2.92E þ 00              ¡2.95E þ 00                  ¡3.08E þ 00
+                      STD                 1.95E-02                  1.15E-02                  9.67E-03                 9.49E-03                     7.65E-03
+  F21                 Best                ¡1.02E þ 01               ¡1.02E þ 01               ¡1.02E þ 01              ¡1.02E þ 01                  ¡1.02E þ 01
+                      Median              ¡1.02E þ 01               ¡1.02E þ 01               ¡1.02E þ 01              ¡1.02E þ 01                  ¡1.02E þ 01
+                      Mean                ¡1.01E þ 01               ¡1.02E þ 01               ¡1.02E þ 01              ¡1.02E þ 01                  ¡1.02E þ 01
+                      Worst               ¡1.01E þ 01               ¡1.01E þ 01               ¡1.02E þ 01              ¡1.02E þ 01                  ¡1.01E þ 01
+                      STD                 3.84E-04                  5.22E-06                  5.87E-08                 8.52E-08                     4.81E-07
+  F22                 Best                ¡1.04E þ 01               ¡1.04E þ 01               ¡1.04E þ 01              ¡1.04E þ 01                  ¡1.04E þ 01
+                      Median              ¡1.04E þ 01               ¡1.04E þ 01               ¡1.04E þ 01              ¡1.04E þ 01                  ¡1.04E þ 01
+                      Mean                ¡1.03E þ 01               ¡1.04E þ 01               ¡1.04E þ 01              ¡1.04E þ 01                  ¡1.04E þ 01
+                      Worst               ¡9.77E þ 00               ¡1.04E þ 01               ¡1.04E þ 01              ¡1.04E þ 01                  ¡1.04E þ 01
+                      STD                 3.67E-02                  1.54E-05                  4.49E-06                 8.13E-08                     9.94E-08
+  F23                 Best                ¡1.05E þ 01               ¡1.05E þ 01               ¡1.05E þ 01              ¡1.05E þ 01                  ¡1.05E þ 01
+                      Median              ¡1.05E þ 01               ¡1.05E þ 01               ¡1.05E þ 01              ¡1.05E þ 01                  ¡1.05E þ 01
+                      Mean                ¡1.05E þ 01               ¡1.05E þ 01               ¡1.05E þ 01              ¡1.05E þ 01                  ¡1.05E þ 01
+                      Worst               ¡1.03E þ 01               ¡1.05E þ 01               ¡1.05E þ 01              ¡1.05E þ 01                  ¡1.05E þ 01
+                      STD                 3.25E-03                  1.74E-05                  1.15E-07                 4.42E-08                     2.36E-09
+
+
+
+    It is important to highlight that the parameters used in algorithms            3.1. Optimal population size
+can significantly influence the search results. For the experiments con­
+ducted, the parameters employed were the original values set by the                    Determining the optimal population size is a crucial aspect for a
+authors of the respective algorithms in their research papers. Specif­             newly developed algorithm. To evaluate the performance and capabil­
+ically, in EO, the parameters a1 and a2 were set to 2 and 1, respectively,         ities of optimization algorithms, researchers commonly employ a set of
+while GP was set to 0.5. In GOA, the parameter cmax was assigned a value           23 classical test functions (Yao et al., 1999). These test functions have
+of 1, and cmin was set to 0.00004. Similarly, in MVO, the parameters               been extensively used in various optimization algorithm studies (Saremi
+WEPmax and WEPmin were set to 1 and 0.2, respectively. The imple­                  et al., 2017; Faramarzi et al., 2020a; Chopra et al., 2022; MiarNaeimi
+mentation of the algorithms, benchmark functions (23 famous test                   et al., 2021; Dong et al., 2021). We have selected this test set as well.
+functions), and engineering design problems was done using MATLAB                      The 23 classical test functions are categorized into three types:
+R2019b.                                                                            single-peak, multi-peak, and fixed-dimension multi-peak functions. In
+    To ensure robustness and reliability of the results, each algorithm            Tables 2-4, these functions are presented along with their specific de­
+was executed independently for 20 runs. Five performance indicators,               tails, such as function types, search ranges, and theoretical optimal
+namely Best, Worst, Average, Standard Deviation (SD), and Median                   values. These test functions serve as benchmarks to assess the algo­
+values, were used to present the quality of solutions obtained by the              rithm’s ability to handle different function types and optimize within
+HEOA.                                                                              specific ranges. By evaluating the performance of the algorithm across
+                                                                                   these 23 test functions, we can gain insights into its effectiveness and
+                                                                                   efficiency in solving optimization problems.
+                                                                                       Table 5 provides a comprehensive overview of the search results
+
+
+                                                                              14
+J. Lian and G. Hui                                                                                                Expert Systems With Applications 241 (2024) 122638
+
+
+Table 8
+Results of unimodal benchmark functions (different algorithms).
+  Function    Item     HEOA         ALO         GWO          WOA         SSA           AOA          HHO        GOA         SCA           MVO           EO
+
+  F1          Best     0.00E þ      3.29E-03    1.03E-19     3.71E-56    2.19E-06      3.67E-136    3.82E-80   1.94E +     1.63E +       1.10E +       6.20E-30
+                       00                                                                                      00          00            00
+              Median   0.00E þ      1.90E-03    3.30E-36     1.11E-101   2.64E-06      2.37E-39     4.21E-     5.55E +     1.29E +       3.05E-01      2.35E-53
+                       00                                                                           123        01          04
+              Mean     0.00E þ      4.23E-02    1.90E-18     1.59E-51    1.03E-03      1.12E-20     1.52E-62   1.17E +     8.42E +       1.77E +       1.67E-27
+                       00                                                                                      01          01            00
+              Worst    0.00E þ      1.45E-01    6.99E-18     1.39E-50    6.56E-03      2.23E-19     2.98E-61   2.65E +     4.30E +       3.57E +       2.24E-26
+                       00                                                                                      01          02            00
+              STD      0.00E þ      1.90E-03    3.30E-36     1.11E-101   2.64E-06      2.37E-39     4.21E-     5.55E +     1.29E +       3.05E-01      2.35E-53
+                       00                                                                           123        01          04
+  F2          Best     0.00E þ      1.15E +     4.40E-11     3.03E-32    5.95E +       0.00E þ      4.34E-33   1.10E +     7.35E-01      5.92E +       6.65E-16
+                       00           02                                   00            00                      02                        01
+              Median   0.00E þ      1.72E +     1.80E-11     5.21E-34    1.47E +       0.00E þ      2.22E-36   7.28E +     1.24E-01      1.03E +       1.38E-16
+                       00           01                                   00            00                      00                        00
+              Mean     0.00E þ      4.44E +     1.91E-11     3.39E-33    2.08E +       0.00E þ      3.27E-34   1.95E +     1.59E-01      6.06E +       2.13E-16
+                       00           01                                   00            00                      01                        00
+              Worst    0.00E þ      1.15E +     4.40E-11     3.03E-32    5.95E +       0.00E þ      4.34E-33   1.10E +     7.35E-01      5.92E +       6.65E-16
+                       00           02                                   00            00                      02                        01
+              STD      0.00E þ      1.56E +     1.07E-22     4.90E-65    2.72E +       0.00E þ      9.00E-67   9.55E +     2.32E-02      2.21E +       3.20E-32
+                       00           03                                   00            00                      02                        02
+  F3          Best     0.00E þ      1.50E +     3.04E-06     7.74E +     3.84E +       1.91E-132    4.98E-69   3.81E +     2.93E +       1.69E +       3.13E-09
+                       00           03                       03          02                                    02          03            02
+              Median   0.00E þ      3.32E +     5.10E-04     4.45E +     1.19E +       2.67E-47     5.42E-59   1.48E +     8.18E +       3.26E +       1.64E-04
+                       00           03                       04          03                                    03          03            02
+              Mean     0.00E þ      3.54E +     8.05E-04     4.44E +     1.66E +       4.72E-03     3.05E-50   2.10E +     9.10E +       3.25E +       9.70E-06
+                       00           03                       04          03                                    03          03            02
+              Worst    0.00E þ      6.85E +     4.92E-03     6.37E +     3.79E +       2.43E-02     4.94E-49   5.56E +     1.79E +       4.79E +       1.22E-04
+                       00           03                       04          03                                    03          04            02
+              STD      0.00E þ      1.73E +     1.18E-06     1.55E +     1.27E +       5.63E-05     1.16E-98   1.72E +     2.19E +       8.73E +       8.38E-10
+                       00           06                       08          06                                    06          07            03
+  F4          Best     0.00E þ      1.12E +     3.54E-05     2.00E-03    3.21E +       8.03E-41     4.69E-37   4.14E +     2.04E +       8.83E-01      5.09E-08
+                       00           01                                   00                                    00          01
+              Median   0.00E þ      1.61E +     9.75E-05     5.36E +     1.08E +       4.15E-02     3.02E-34   8.68E +     4.60E +       1.76E +       1.56E-07
+                       00           01                       01          01                                    00          01            00
+              Mean     0.00E þ      1.61E +     1.24E-04     4.88E +     1.06E +       3.44E-02     2.14E-32   8.69E +     4.53E +       1.85E +       3.93E-07
+                       00           01                       01          01                                    00          01            00
+              Worst    0.00E þ      2.14E +     2.83E-04     8.80E +     1.76E +       4.88E-02     2.38E-31   1.18E +     6.80E +       2.95E +       2.20E-06
+                       00           01                       01          01                                    01          01            00
+              STD      0.00E þ      6.68E +     5.60E-09     8.77E +     1.23E +       2.40E-04     3.50E-63   4.35E +     1.73E +       3.01E-01      3.23E-13
+                       00           00                       02          01                                    00          02
+  F5          Best     5.04E-12     8.96E +     2.60E +      2.75E +     2.87E +       2.78E + 01   4.61E-04   2.13E +     1.48E +       4.23E +       2.50E +
+                                    01          01           01          01                                    02          03            01            01
+              Median   6.90E-09     2.14E +     2.64E +      2.78E +     1.38E +       2.84E + 01   1.06E-02   6.29E +     2.69E +       1.15E +       2.54E +
+                                    02          01           01          02                                    02          04            02            01
+              Mean     1.48E-07     4.45E +     2.66E +      2.79E +     3.11E +       2.84E + 01   2.45E-02   1.42E +     1.17E +       2.80E +       2.54E +
+                                    02          01           01          02                                    03          05            02            01
+              Worst    1.33E-06     1.68E +     2.80E +      2.87E +     1.33E +       2.88E + 01   1.49E-01   1.02E +     5.69E +       1.28E +       2.56E +
+                                    03          01           01          03                                    04          05            03            01
+              STD      1.50E-13     1.79E +     3.29E-01     1.14E-01    1.61E +       7.30E-02     1.55E-03   4.64E +     2.60E +       9.88E +       2.30E-02
+                                    05                                   05                                    06          10            04
+  F6          Best     1.15E-16     2.39E-03    1.09E-04     7.54E-02    2.70E-06      2.77E + 00   2.68E-08   1.31E +     6.51E +       1.19E +       4.77E-06
+                                                                                                               00          00            00
+              Median   9.59E-12     3.33E-02    5.04E-01     2.91E-01    1.79E-04      3.27E + 00   6.28E-05   6.94E +     5.63E +       1.90E +       1.37E-05
+                                                                                                               00          01            00
+              Mean     3.50E-10     7.70E-02    5.13E-01     2.94E-01    7.94E-04      3.27E + 00   2.02E-04   8.75E +     1.01E +       1.90E +       1.57E-05
+                                                                                                               00          02            00
+              Worst    2.70E-09     6.82E-01    1.26E +      5.35E-01    7.58E-03      3.98E + 00   1.10E-03   2.72E +     4.09E +       3.15E +       3.10E-05
+                                                00                                                             01          02            00
+              STD      4.75E-19     2.14E-02    1.16E-01     1.90E-02    2.80E-06      7.28E-02     8.62E-08   4.95E +     1.22E +       2.56E-01      5.98E-11
+                                                                                                               01          04
+  F7          Best     1.32E-06     1.02E-01    4.58E-04     2.64E-05    5.95E-02      1.60E-06     2.04E-05   3.27E-02    3.13E-02      8.00E-03      2.94E-04
+              Median   4.40E-06     2.27E-01    1.61E-03     2.56E-03    1.60E-01      6.77E-05     1.25E-04   6.32E-02    1.82E-01      2.95E-02      1.25E-03
+              Mean     4.50E-06     2.31E-01    1.77E-03     3.83E-03    1.54E-01      8.47E-05     2.01E-04   6.77E-02    2.11E-01      3.19E-02      1.50E-03
+              Worst    8.04E-06     4.10E-01    4.06E-03     2.00E-02    2.35E-01      2.80E-04     6.84E-04   1.41E-01    7.00E-01      6.66E-02      3.71E-03
+              STD      6.00E-12     5.37E-03    1.07E-06     2.42E-05    2.29E-03      6.44E-09     3.57E-08   8.78E-04    2.64E-02      1.62E-04      6.87E-07
+
+
+
+obtained by the HEOA after 300 iterations for different population sizes,           comparison of the algorithm’s performance across different function
+specifically N = 10, 20, 30, 40, and 50. The table includes detailed in­            types and population sizes.
+formation on the algorithm’s performance, showcasing its effectiveness                  Additionally, Fig. 5 displays the function images of F1-F23, along
+in optimizing the solutions.                                                        with the convergence curves of historical search points and the average
+    Fig. 4 presents the convergence curve of the fitness values achieved            fitness change within the population achieved by the HEOA when
+by the HEOA when searching for optimal solutions of F1-F23 across                   searching for optimal solutions at N = 50. This visualization aids in
+various population sizes. This visual representation allows for a                   understanding the algorithm’s search trajectory and the progression of
+
+
+                                                                               15
+J. Lian and G. Hui                                                                                                 Expert Systems With Applications 241 (2024) 122638
+
+
+Table 9
+Result of multimodal benchmark functions (different algorithms).
+  Function    Item     HEOA        ALO         GWO          WOA          SSA            AOA         HHO        GOA          SCA           MVO           EO
+
+  F8          Best     − 6.96E +   − 5.42E +   − 3.60E +    − 7.80E +    − 6.74E +      − 4.45E +   ¡1.26E þ   − 6.14E +    − 3.29E +     − 6.54E +     − 8.25E +
+                       03          03          03           03           03             03          04         03           03            03            03
+              Median   − 8.04E +   − 5.42E +   − 6.19E +    − 9.04E +    − 7.30E +      − 5.39E +   ¡1.26E þ   − 7.28E +    − 3.82E +     − 7.60E +     − 8.76E +
+                       03          03          03           03           03             03          04         03           03            03            03
+              Mean     − 8.22E +   − 5.77E +   − 6.03E +    − 1.01E +    − 7.50E +      − 5.26E +   ¡1.26E þ   − 7.42E +    − 3.79E +     − 7.51E +     − 8.91E +
+                       03          03          03           04           03             03          04         03           03            03            03
+              Worst    − 1.01E +   − 8.98E +   − 7.34E +    ¡1.26E þ     − 8.76E +      − 5.70E +   ¡1.26E þ   − 9.03E +    − 4.24E +     − 9.12E +     − 9.96E +
+                       04          03          03           04           03             03          04         03           03            03            03
+              STD      5.31E +     7.16E +     5.07E +      2.98E + 06   3.43E +        1.47E +     1.91E þ    6.20E +      7.05E +       4.08E +       1.99E +
+                       05          05          05                        05             05          00         05           04            05            05
+  F9          Best     0.00E þ     4.38E +     3.98E-13     0.00E þ      1.89E +        0.00E þ     0.00E þ    3.51E +      2.42E +       6.86E +       0.00E þ
+                       00          01                       00           01             00          00         01           00            01            00
+              Median   0.00E þ     7.37E +     5.79E +      0.00E þ      3.33E +        0.00E þ     0.00E þ    8.59E +      5.17E +       1.12E +       0.00E þ
+                       00          01          00           00           01             00          00         01           01            02            00
+              Mean     0.00E þ     7.37E +     5.15E +      5.68E-15     3.62E +        0.00E þ     0.00E þ    8.56E +      6.32E +       1.19E +       0.00E þ
+                       00          01          00                        01             00          00         01           01            02            00
+              Worst    0.00E þ     9.85E +     1.34E +      5.68E-14     7.46E +        0.00E þ     0.00E þ    1.22E +      2.10E +       1.84E +       0.00E þ
+                       00          01          01                        01             00          00         02           02            02            00
+              STD      0.00E þ     2.16E +     1.84E +      2.91E-28     2.06E +        0.00E þ     0.00E þ    6.27E +      2.87E +       9.15E +       0.00E þ
+                       00          02          01                        02             00          00         02           03            02            00
+  F10         Best     4.44E-16    1.84E +     3.84E-11     4.44E-16     1.65E +        4.44E-16    4.44E-16   2.38E +      1.41E +       1.09E +       2.18E-14
+                                   00                                    00                                    00           00            00
+              Median   4.44E-16    5.98E +     2.11E-10     4.00E-15     2.60E +        4.44E-16    4.44E-16   4.48E +      8.53E +       1.95E +       3.95E-14
+                                   00                                    00                                    00           00            00
+              Mean     4.44E-16    6.10E +     2.52E-10     4.88E-15     2.69E +        4.44E-16    4.44E-16   4.07E +      1.12E +       1.98E +       3.77E-14
+                                   00                                    00                                    00           01            00
+              Worst    4.44E-16    1.19E +     5.74E-10     7.55E-15     4.30E +        4.44E-16    4.44E-16   5.07E +      2.04E +       3.13E +       5.02E-14
+                                   01                                    00                                    00           01            00
+              STD      0.00E þ     6.58E +     2.60E-20     6.15E-30     6.11E-01       0.00E þ     0.00E þ    6.57E-01     6.72E +       2.30E-01      5.11E-29
+                       00          00                                                   00          00                      01
+  F11         Best     0.00E þ     4.71E-02    0.00E þ      0.00E þ      1.34E-02       3.53E-02    0.00E þ    6.41E-01     1.06E +       8.58E-01      0.00E þ
+                       00                      00           00                                      00                      00                          00
+              Median   0.00E þ     1.69E-01    1.11E-16     0.00E þ      7.72E-02       1.77E-01    0.00E þ    9.72E-01     1.33E +       9.38E-01      0.00E þ
+                       00                                   00                                      00                      00                          00
+              Mean     0.00E þ     1.64E-01    3.95E-03     3.14E-02     7.30E-02       1.91E-01    0.00E þ    9.48E-01     1.78E +       9.41E-01      0.00E þ
+                       00                                                                           00                      00                          00
+              Worst    0.00E þ     2.87E-01    3.04E-02     2.86E-01     1.46E-01       5.19E-01    0.00E þ    1.17E +      4.80E +       1.02E +       0.00E þ
+                       00                                                                           00         00           00            00            00
+              STD      0.00E þ     4.46E-03    7.41E-05     6.14E-03     1.15E-03       1.29E-02    0.00E þ    1.87E-02     1.16E +       2.65E-03      0.00E þ
+                       00                                                                           00                      00                          00
+  F12         Best     2.04E-14    4.81E +     6.58E-03     3.10E-03     1.41E +        2.51E +     4.40E-01   3.19E-07     2.81E +       1.44E +       5.48E-01
+                                   00                                    06             00                                  00            00
+              Median   1.32E-12    1.08E +     3.28E-02     1.48E-02     2.33E +        5.13E +     5.27E-01   3.70E-06     5.16E +       1.61E +       1.79E +
+                                   01                                    06             00                                  00            01            00
+              Mean     2.95E-11    1.21E +     3.72E-02     2.38E-02     2.93E +        5.77E +     5.25E-01   6.74E-06     5.25E +       1.79E +       2.31E +
+                                   01                                    06             00                                  00            05            00
+              Worst    1.79E-10    2.13E +     8.83E-02     9.54E-02     6.74E +        1.28E +     6.14E-01   2.58E-05     7.95E +       1.63E +       4.41E +
+                                   01                                    06             01                                  00            06            00
+              STD      2.41E-21    1.48E +     4.58E-04     5.29E-04     2.27E +        6.75E +     2.91E-03   5.14E-11     2.09E +       1.55E +       1.54E +
+                                   01                                    12             00                                  00            11            00
+  F13         Best     3.70E-14    2.77E +     2.02E-01     9.55E-02     1.85E +        2.56E +     2.29E-07   1.78E +      1.44E +       6.52E-02      4.07E-06
+                                   00                                    00             00                     00           00
+              Median   6.89E-12    3.87E +     3.65E-01     3.59E-01     9.32E +        2.83E +     1.07E-04   1.95E +      3.65E +       1.78E-01      2.33E-05
+                                   01                                    00             00                     01           04
+              Mean     7.98E-11    4.10E +     3.90E-01     4.52E-01     1.27E +        2.82E +     1.52E-04   1.98E +      1.49E +       2.16E-01      5.99E-03
+                                   01                                    01             00                     01           06
+              Worst    8.31E-10    7.96E +     7.48E-01     1.67E + 00   3.08E +        2.94E +     5.99E-04   4.44E +      1.68E +       6.23E-01      9.74E-02
+                                   01                                    01             00                     01           07
+              STD      3.53E-20    4.84E +     2.14E-02     1.27E-01     7.99E +        9.11E-03    2.28E-08   1.72E +      1.47E +       1.48E-02      4.50E-04
+                                   02                                    01                                    02           13
+
+
+
+the fitness values.                                                                  HEOA discovers optimal solutions for F8, F21-F23, and near-optimal
+    The combination of Table 5-7 with Figs. 4-5 offers a comprehensive               solutions for the others. This showcases the effectiveness of the algo­
+view of the search performance and convergence behavior of the HEOA                  rithm in the human exploration stage, particularly in searching for
+across different population sizes and function types. The results indicate           single-peak functions.
+that, at N = 50, the HEOA exhibits faster convergence and greater sta­                   However, for functions F5-F6, F8, F12-F13, F20-F23, the HEOA ex­
+bility. It is noteworthy that in the case of F5 and F6, the algorithm                periences mutations during both the human exploration stage and the
+demonstrates stronger stability at N = 40.                                           human development stage. Notably, F8 and F21-F23 yield optimal so­
+    Furthermore, it is observed that for functions F1-F4, F9-F11, F15,               lutions, while the remaining functions produce near-optimal solutions.
+and F17, the HEOA achieves convergence during the human exploration                  This demonstrates the rationality of the algorithm’s approach during the
+stage, successfully finding optimal solutions. For the remaining eight               human development stage and the effectiveness of combining the
+functions, except for F15 which yields a near-optimal solution, the                  human exploration and human development stages.
+
+
+                                                                               16
+

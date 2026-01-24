@@ -1,0 +1,150 @@
+Expert Systems With Applications 241 (2024) 122638
+8
+Levy distribution: To simulate the convoluted nature of knowledge
+acquisition in the human exploration stage and the characteristic of
+spiral development, the Levy distribution is utilized. In this context, the
+expression for the Levy distribution is shown in the Eq. (6), where γ is
+assigned the value of 1.5.
+⎧
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎨
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎩
+Levy(D) =
+μ⋅σ
+|v|
+1
+γ
+μ ∼ N(0, D)
+v ∼ N(0, D)
+σ = (
+Γ(1 + γ)⋅sin(πγ
+2
+)
+Γ(1+γ
+2
+)⋅γ⋅2
+1+γ
+2
+)γ+1
+(6)
+Jumping strategy: The human exploration phase incorporates a
+jumping strategy inspired by image cropping and reorganization tech­
+niques, aiming to enhance the dispersion of search locations. In Fig. 2(a),
+an image is divided into small 36 × 36 pieces and then rearranged ac­
+cording to specific rules to maintain the overall shape. This technique
+leverages the fact that the human eye perceives an image through a
+combination of overall and local features, making it relatively insensi­
+tive to the loss of specific local information. Extending this concept to
+high-dimensional data, as illustrated in Fig. 2(b), this approach pre­
+serves the essential characteristics of the metadata while distributing the
+search across multiple regions, thus improving search efficiency. The
+jump coefficient, denoted as fjump quantifies the extent of jumping and is
+expressed as follows:
+fjump =
+(lb(1) − ub(1))
+δ
+, δ ∈ [100, 2000] (7)
+2.4. Human development stage
+In the stages of human development, the HEOA categorizes human
+society into four distinct roles: leaders, explorers, followers, and losers.
+Each role adopts a unique search strategy, and collectively they
+collaborate to explore the global optimal solution. The specific search
+strategies for each role are outlined below:
+Leaders: Leaders, possessing a wealth of knowledge, are typically
+situated in optimal regions. In the conducted experiments, individuals
+within the top 40 % of pre-adaptation are designated as leaders. They
+embark on a quest to discover superior areas for human development,
+Fig. 4. (continued).
+J. Lian and G. Hui
+Expert Systems With Applications 241 (2024) 122638
+9
+Fig. 5. Classical function images and HEOA search results.
+J. Lian and G. Hui
+Expert Systems With Applications 241 (2024) 122638
+10
+Fig. 5. (continued).
+J. Lian and G. Hui
+Expert Systems With Applications 241 (2024) 122638
+11
+Fig. 5. (continued).
+J. Lian and G. Hui
+Expert Systems With Applications 241 (2024) 122638
+12
+leveraging their existing knowledge. This exploration process is
+captured by the equation expressed in the Eq. (8).
+Xt+1
+i =
+⎧
+⎪
+⎨
+⎪
+⎩
+ω⋅Xt
+i ⋅exp(
+− t
+rand⋅Maxiter
+), R < A
+ω⋅Xt
+i + Rn⋅ones(1, dim), R ≥ A
+(8)
+In the Eq. (8), Rn represents a random number that follows a normal
+distribution. The function ones(1, dim) generate a row vector with dim
+elements, where each element is set to 1. R is a random number in the
+range [0, 1] that represents the complexity of the situation associated
+with the leaders. A denotes the evaluation value of the situation. In the
+conducted experiments, the value of A is 0.6. Based on the complexity of
+the situation at a particular position, the leader will select an appro­
+priate search strategy. The knowledge acquisition ease coefficient,
+denoted as ω, gradually decreases as development progresses. The
+expression for the coefficient ω is as follows:
+ω = 0.2cos(
+π
+2
+(1 −
+t
+Maxiter
+)) (9)
+Explorers: Explorers play a crucial role in venturing into uncharted
+territory to discover the global optimal solution. In the conducted
+experiment, individuals ranking in the top 40 % to 80 % of the popu­
+lation in terms of fitness are designated as explorers. The search strategy
+employed by explorers is represented by Eq. (10).
+Xt+1
+i = Rn⋅exp
+(
+Xt2
+worst − Xt2
+i
+i2
+)
+(10)
+In the Eq. (10), Xt
+worst represents the location of the least adapted
+Fig. 5. (continued).
+J. Lian and G. Hui
+
