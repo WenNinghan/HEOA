@@ -1,7 +1,0 @@
-func: rastrigin
-dim: 2
-best_f: 0.00000000e+00
-best_x: [ 1.0930e-13 -7.5031e-16]
-n_pop: 50
-max_iter: 300
-seed: 0

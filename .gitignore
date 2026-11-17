@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.idea/
+.vscode/
+.codex/
+.DS_Store
+__MACOSX/
+*.pdf
